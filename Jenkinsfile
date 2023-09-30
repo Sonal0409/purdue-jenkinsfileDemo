@@ -1,10 +1,11 @@
 
 pipeline{
-    
+    // need to add agents
     agent any
     
     tools{
         // here mymaven is tool configured under global tool configuration
+        // new tools added
         maven 'mymaven'
     }
     
