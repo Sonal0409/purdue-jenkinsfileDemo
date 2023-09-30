@@ -10,33 +10,7 @@ pipeline{
     }
     
     stages{
-        
-        stage('Clone repo')
-        
-        {
-            steps{
-                git 'https://github.com/Sonal0409/DevOpsCodeDemo.git'
-            }
-        }
-        
-        stage('Compile Code')
-        {
-            steps{
-                // you can have many steps
-                sh 'mvn compile'
-            }
-        }
     
-        stage('Code Review'){
-            steps{
-                sh 'mvn pmd:pmd'
-            }
-            post {
-                success{
-                    recordIssues(tools: [pmdParser(pattern: '**/pmd.xml')])
-                }
-            }
-        }
         
           stage('Test Code')
         {
@@ -51,12 +25,6 @@ pipeline{
                 }
             }
         }
-          stage('Package Code')
-        {
-            steps{
-                // you can have many steps
-                sh 'mvn package'
-            }
-        }
+      
     }
 }
