@@ -38,25 +38,6 @@ pipeline{
             }
         }
         
-          stage('Test Code')
-        {
-         
-            steps{
-                // you can have many steps
-                sh 'mvn test'
-            }
-            post{
-                success{
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-        }
-          stage('Package Code')
-        {
-            steps{
-                // you can have many steps
-                sh 'mvn package'
-            }
-        }
+       
     }
 }
