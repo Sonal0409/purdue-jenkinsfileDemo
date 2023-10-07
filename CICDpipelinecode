@@ -20,5 +20,16 @@ pipeline{
                 sh 'mvn clean package'
             }
         }
+        
+        stage('Deploy the code')
+        {
+            steps{
+                
+                sshagent(['tomcatsshcredentials']) {
+        sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/CICDPipeline/target/addressbook.war ec2-user@3.145.187.206:/opt/tomcat/webapps'
+}
+                
+            }
+        }
     }
 }
